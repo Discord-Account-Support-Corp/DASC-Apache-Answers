@@ -1,0 +1,8 @@
+{
+  "name": "discordasc-answer",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "echo 'Replace with Apache Answer launch script'"
+  },
+  "dependencies": {}
+}
