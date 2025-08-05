@@ -1,6 +1,5 @@
 FROM golang:1.21 AS builder
 WORKDIR /app
-
 RUN git clone https://github.com/apache/incubator-answer.git .
 RUN make build
 
