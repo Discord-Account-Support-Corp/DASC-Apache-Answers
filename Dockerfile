@@ -1,11 +1,12 @@
-FROM node:18
-
+FROM golang:1.21 AS builder
 WORKDIR /app
-COPY . /app
 
-RUN npm install --legacy-peer-deps
+RUN git clone https://github.com/apache/incubator-answer.git .
+RUN make build
 
-ENV PORT=3000
-EXPOSE 3000
+FROM debian:bullseye-slim
+WORKDIR /app
+COPY --from=builder /app/bin/answer /app/answer
 
-CMD ["npm", "run", "dev"]
+EXPOSE 80
+CMD ["./answer", "run"]
